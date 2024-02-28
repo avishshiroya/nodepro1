@@ -5,6 +5,38 @@ import streamifier from "streamifier"
 import { getDataUri } from "../utils/features.js";
 import { promisify } from "util";
 import { Readable } from "stream";
+
+
+export const photoUploadController=async(req,res)=>{
+    try {
+        const {height,width,crop,quality} = req.body
+        if(!req.file){
+            return res.status(401).send({
+                success:false,
+                message:"File can't read"
+            })
+        }
+        const file = getDataUri(req.file)
+        //file compression with transform the height and width to demand on user
+        const upload_video = await cloudinary.uploader.upload(file.content,{transformation:[{height:height,width:width,gravity:"faces",crop:crop},{quality:quality,fetch_format: "auto"}]})
+        if(!upload_video){
+            return res.status(401).send({
+                success:false,
+                message:"Cannot upload the video"
+            })
+        }
+        res.status(200).send({
+            success:true,
+            message:"Image Uploaded",
+            image:upload_video.secure_url
+        })
+    } catch (error) {
+        
+    }
+};
+
+
+
 export const uploadimage = async (req, res) => {
 
 

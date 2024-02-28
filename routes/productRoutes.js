@@ -5,11 +5,13 @@ import { singleUpload } from "../middleware/multer.js";
 import { getDataUri } from "../utils/features.js";
 import fs from "fs"
 // import { error } from "console";
-import { uploadVideo, uploadVideoFile, uploadimage } from "../controllers/productController.js";
+import { photoUploadController, uploadVideo, uploadVideoFile, uploadimage } from "../controllers/productController.js";
+import { uploadVideomanually } from "../photos/fileupload.js";
 const router = express();
 
-router.post('/video',singleUpload,uploadimage)
+router.post('/video',uploadVideomanually)
 router.post('/videoUpload',singleUpload,uploadVideoFile)
+router.post('/photo-upload',singleUpload,photoUploadController)
 
 router.post("/post", singleUpload, async (req, res) => {
     try {

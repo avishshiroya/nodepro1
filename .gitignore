@@ -2,3 +2,6 @@
 /.env
 /photos/video.mp4
 /upload_video
+/photos/temp.mp4
+/photos/output_compressed_video.mp4
+/photos/video1.mp4
