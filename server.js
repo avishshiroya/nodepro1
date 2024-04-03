@@ -14,6 +14,11 @@ import './utils/passport.js'
 import session from "express-session";
 import passport from 'passport';
 import {v2 as cloudinary} from 'cloudinary';
+import ejs from 'ejs'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function isLoggedIn(req,res,next){
     req.user?next():res.sendStatus(401);
@@ -68,8 +73,8 @@ app.get('/auth/google/failure',(req,res)=>{
 })
 
 //to save the logger in the text file *********
-// const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' }) // create a write stream (in append mode)
-// app.use(morgan('[:date[clf]] :method :url :status :response-time ms - :res[content-length]', { stream: accessLogStream }))
+const accessLogStream = fs.createWriteStream('./access.log', { flags: 'a' }) // create a write stream (in append mode)
+app.use(morgan('[:date[clf]] :method :url :status :response-time ms - :res[content-length]', { stream: accessLogStream }))
 
 
 //swagger
@@ -81,10 +86,11 @@ app.use('/api/v1',routers)
 
 
 app.get("/", (req, res) => {
-    res.status(200).send({
-        success: true,
-        message: "run successfully"
-    })
+    // res.status(200).send({
+    //     success: true,
+    //     message: "run successfully"
+    // })
+    res.sendFile(__dirname + '/index.html')
 })
 
 const PORT = process.env.PORT || 3000

@@ -153,3 +153,42 @@ compressVideo(inputFilePath, outputFilePath, '500k', (error) => {
 //     console.log(`error:${error}`)
 // })
 }
+
+
+export const sendVideoFileInChunks = async(req,res)=>{
+    try {
+        const range = req.headers.range;
+    
+        console.log(range);
+        if(!range){
+            res.status(400).send({
+                status:'error',
+                message:"Required Range Headers"
+            })
+        }
+        console.log("start");
+        const videoPath = '/Users/crawlapps/Desktop/node/nodepro/photos/video.mp4'
+        console.log(videoPath);
+        const videoSize = fs.statSync("/Users/crawlapps/Desktop/node/nodepro/photos/video   .mp4").size;
+        console.log(videoSize);
+        const chunk_size = 10**6;//1MB
+        const start = Number(range.replace(/\D/g,""));
+        console.log(start);
+        const end = Math.min(start+chunk_size,videoSize-1);
+        const contentLength = end-start +1;
+        console.log(contentLength);
+        const headers = {
+            "Content-Range":`bytes ${start}-${end}/${videoSize}`,
+            "Accept-Ranges":"bytes",
+            "Content-Length":contentLength,
+            "Content-Type":"video/mp4"
+        }
+        res.writeHead(206,headers);
+        const videoStream = fs.createReadStream(videoPath,{start,end});
+        // console.log(videoStream);
+        videoStream.pipe(res)
+        console.log("send");
+    } catch (error) {
+        console.log(error);
+    }
+}

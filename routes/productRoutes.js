@@ -6,10 +6,11 @@ import { getDataUri } from "../utils/features.js";
 import fs from "fs"
 // import { error } from "console";
 import { photoUploadController, uploadVideo, uploadVideoFile, uploadimage } from "../controllers/productController.js";
-import { uploadVideomanually } from "../photos/fileupload.js";
+import { sendVideoFileInChunks, uploadVideomanually } from "../photos/fileupload.js";
 const router = express();
 
 router.post('/video',uploadVideomanually)
+router.get('/video',sendVideoFileInChunks)
 router.post('/videoUpload',singleUpload,uploadVideoFile)
 router.post('/photo-upload',singleUpload,photoUploadController)
 
