@@ -10,6 +10,7 @@ import { sendVideoFileInChunks, uploadVideomanually } from "../photos/fileupload
 const router = express();
 
 router.post('/video',uploadVideomanually)
+//sent video in the streaming to the user
 router.get('/video',sendVideoFileInChunks)
 router.post('/videoUpload',singleUpload,uploadVideoFile)
 router.post('/photo-upload',singleUpload,photoUploadController)

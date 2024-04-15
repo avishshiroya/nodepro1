@@ -169,7 +169,7 @@ export const sendVideoFileInChunks = async(req,res)=>{
         console.log("start");
         const videoPath = '/Users/crawlapps/Desktop/node/nodepro/photos/video.mp4'
         console.log(videoPath);
-        const videoSize = fs.statSync("/Users/crawlapps/Desktop/node/nodepro/photos/video   .mp4").size;
+        const videoSize = fs.statSync("/Users/crawlapps/Desktop/node/nodepro/photos/video.mp4").size;
         console.log(videoSize);
         const chunk_size = 10**6;//1MB
         const start = Number(range.replace(/\D/g,""));
