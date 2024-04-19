@@ -393,3 +393,17 @@ GET /api/v1/user/getdata 200 191 - 45.379 ms
 [15/Apr/2024:04:31:14 +0000] GET /api/v1/product/video 206 0.491 ms - 1000001
 [15/Apr/2024:04:31:19 +0000] GET /api/v1/product/video 206 0.567 ms - 1000001
 [15/Apr/2024:04:31:19 +0000] GET /api/v1/product/video 206 0.974 ms - 1000001
+[15/Apr/2024:08:57:24 +0000] GET / 304 4.550 ms - -
+[19/Apr/2024:11:58:48 +0000] GET /api-docs/ 200 6.604 ms - 3106
+[19/Apr/2024:11:58:53 +0000] GET /api-docs/swagger-ui-init.js 200 0.968 ms - 13129
+[19/Apr/2024:11:58:56 +0000] GET /api-docs/swagger-ui.css 200 2567.877 ms - 152042
+[19/Apr/2024:11:58:57 +0000] GET /api-docs/swagger-ui-standalone-preset.js 200 2566.234 ms - 230809
+[19/Apr/2024:11:59:06 +0000] GET /api-docs/swagger-ui-bundle.js 200 2567.177 ms - 1402103
+[19/Apr/2024:11:59:20 +0000] GET /api-docs/ 304 1.102 ms - -
+[19/Apr/2024:11:59:20 +0000] GET /api-docs/favicon-32x32.png 200 2442.340 ms - 628
+[19/Apr/2024:11:59:21 +0000] GET /api-docs/favicon-16x16.png 200 205.720 ms - 665
+[19/Apr/2024:11:59:27 +0000] GET /api-docs/swagger-ui-standalone-preset.js 304 0.700 ms - -
+[19/Apr/2024:11:59:27 +0000] GET /api-docs/swagger-ui-bundle.js 304 0.679 ms - -
+[19/Apr/2024:11:59:28 +0000] GET /api-docs/swagger-ui.css 304 0.502 ms - -
+[19/Apr/2024:11:59:28 +0000] GET /api-docs/swagger-ui-init.js 304 0.274 ms - -
+[19/Apr/2024:11:59:28 +0000] GET /api-docs/favicon-32x32.png 200 0.849 ms - 628
